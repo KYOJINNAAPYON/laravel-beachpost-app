@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -14,10 +16,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Auth::user()->posts;
+        $posts = Post::all();
+        $categories = Category::all();
  
-         return view('posts.index', compact('posts'));
-    }
+        return view('posts.index', compact('posts'));
+   }
+
 
     /**
      * Show the form for creating a new resource.
@@ -26,8 +30,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+  
+        return view('posts.create', compact('categories'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -49,6 +56,7 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->image = $request->input('image');
         $post->tag = $request->input('tag');
+        $post->category_id = $request->input('category_id');
         $post->user_id = Auth::id();
         $post->save();
 
@@ -74,8 +82,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('posts'));
+        $categories = Category::all();
+  
+        return view('posts.edit', compact('post', 'categories'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -86,10 +97,19 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->name = $request->input('title');
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'category' => 'required',
+            'image' => 'required',
+        ]);
+
+        $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->image = $request->input('image');
         $post->tag = $request->input('tag');
+        $post->category_id = $request->input('category_id');
+        $post->user_id = Auth::id();
         $post->update();
  
          return to_route('posts.index');
