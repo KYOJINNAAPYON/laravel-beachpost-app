@@ -19,7 +19,7 @@ class PostController extends Controller
         $posts = Post::all();
         $categories = Category::all();
  
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'categories'));
    }
 
 
@@ -44,12 +44,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'category' => 'required',
-            'image' => 'required',
-        ]);
+        // dd($request);
 
         $post = new Post();
         $post->title = $request->input('title');
@@ -57,7 +52,6 @@ class PostController extends Controller
         $post->image = $request->input('image');
         $post->tag = $request->input('tag');
         $post->category_id = $request->input('category_id');
-        $post->user_id = Auth::id();
         $post->save();
 
         return to_route('posts.index')->with('flash_message', '投稿が完了しました。'); 
