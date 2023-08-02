@@ -10,15 +10,15 @@
   
     <div>
         <strong>Title:</strong>
-        <input type="text" name="title" placeholder="title">
+        <input type="text" name="title" placeholder="Title">
     </div>
     <div>
         <strong>Content:</strong>
-        <textarea style="height:150px" name="Content" placeholder="Content"></textarea>
+        <textarea style="height:150px" name="content" placeholder="Content"></textarea>
     </div>
     <div>
         <strong>Tag:</strong>
-        <input type="text" name="tag" placeholder="tag">
+        <input type="text" name="tag" placeholder="#Tag">
     </div>
      <div>
          <strong>Category:</strong>
