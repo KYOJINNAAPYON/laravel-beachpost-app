@@ -65,7 +65,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('posts'));
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -91,19 +91,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'category' => 'required',
-            'image' => 'required',
-        ]);
-
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->image = $request->input('image');
         $post->tag = $request->input('tag');
         $post->category_id = $request->input('category_id');
-        $post->user_id = Auth::id();
         $post->update();
  
          return to_route('posts.index');
