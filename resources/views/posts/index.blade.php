@@ -16,8 +16,13 @@
          <td>{{ $post->category_id }}</td>
          <td>{{ $post->image }}</td>
          <td>
-             <a href="{{ route('posts.show',$post->id) }}">Show</a>
-             <a href="{{ route('posts.edit',$post->id) }}">Edit</a>
+             <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+              <a href="{{ route('posts.show',$post->id) }}">Show</a>
+              <a href="{{ route('posts.edit',$post->id) }}">Edit</a>
+                 @csrf
+                 @method('DELETE')
+                 <button type="submit">Delete</button>
+             </form>
          </td>
      </tr>
      @endforeach
