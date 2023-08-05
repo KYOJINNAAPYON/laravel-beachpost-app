@@ -1,31 +1,37 @@
-<div>
-     <h2> Show Posts</h2>
- </div>
- <div>
+@extends('layouts.app') 
+ 
+ @section('content')
+ 
+ <table>
+     <div class="container mt-4">
+    
+        <div class="col-12">
+          <div class="row">
+          <div class="post">
+            <div class="col-12 mb-4 mt-2">
+            Title : {{ $post->title }}
+            </div>
+            <div class="col-12 mb-4 mt-2">
+            Place : {{ $post->category_id }}
+            </div>
+            <div class="col-12 mb-4 mt-2">
+            Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
+            </div>
+            <div class="col-12 mb-4 mt-2">
+            Content : {{ $post->content }}
+            </div>
+            <div class="col-12 mb-4 mt-2">
+            Tag : {{ $post->tag }}
+            </div>
+          </div>
+          </div>
+        </div>
+        <div>
      <a href="{{ route('posts.index') }}"> Back</a>
  </div>
- 
- <div>
-     <strong>Title:</strong>
-     {{$post->title}}
- </div>
- 
- <div>
-     <strong>Content:</strong>
-     {{$post->content}}
- </div>
- 
- <div>
-     <strong>Tag:</strong>
-     {{$post->tag}} 
- </div>
+     </div>
+     
+    </table>
 
- <div>
-     <strong>Image:</strong>
-     {{$post->image}} 
- </div>
-
- <div>
-     <strong>Category:</strong>
-     {{$post->category_id}} 
- </div>
+ 
+ @endsection
