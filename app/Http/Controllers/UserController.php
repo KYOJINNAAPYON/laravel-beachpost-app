@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,5 +48,14 @@ class UserController extends Controller
  
          return to_route('mypage');
     }
+
+    public function favorite()
+     {
+         $user = Auth::user();
+ 
+         $favorites = $user->favorites(Post::class)->get();
+ 
+         return view('users.favorite', compact('favorites'));
+     }
 
 }
