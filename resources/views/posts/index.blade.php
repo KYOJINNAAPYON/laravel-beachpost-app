@@ -20,6 +20,10 @@
             <div class="col-12 mb-4 mt-2">
             Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
             </div>
+            <div class="row justify-content-between">
+              <div class="col-2"></div>
+              <div class="col-2">{{ $post->created_at }}</div>
+            </div>
             <div class="col-12 mb-4 mt-2">
             Content : {{ $post->content }}
             </div>
