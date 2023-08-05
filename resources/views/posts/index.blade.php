@@ -15,7 +15,7 @@
             Title : {{ $post->title }}
             </div>
             <div class="col-12 mb-4 mt-2">
-            Place : {{ $post->name }}
+            Place : {{ $post->category_id }}
             </div>
             <div class="col-12 mb-4 mt-2">
             Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">

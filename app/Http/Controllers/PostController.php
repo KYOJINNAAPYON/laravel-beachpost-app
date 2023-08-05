@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -16,9 +19,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = DB::table('posts')->get();
         $categories = Category::all();
  
+        // dd($posts);
         return view('posts.index', compact('posts', 'categories'));
    }
 
@@ -31,8 +35,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $users = User::all();
   
-        return view('posts.create', compact('categories'));
+        return view('posts.create', compact('categories', 'users'));
     }
 
 
@@ -52,6 +57,7 @@ class PostController extends Controller
         $post->image = $request->input('image');
         $post->tag = $request->input('tag');
         $post->category_id = $request->input('category_id');
+        $post->user_id = Auth::id();
         $post->save();
 
         return to_route('posts.index')->with('flash_message', '投稿が完了しました。'); 
