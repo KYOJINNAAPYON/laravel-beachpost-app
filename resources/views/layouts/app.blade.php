@@ -15,6 +15,9 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Styles -->
+    <link href="{{ asset('css/beachapp.css') }}" rel="stylesheet">
 </head>
 <body style="padding: 60px 0;">
     <div id="app">
