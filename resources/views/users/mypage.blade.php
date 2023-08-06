@@ -20,7 +20,7 @@
          <div class="container">
                  <div class="row">
                     <div class="col-9 d-flex ms-2 mt-3 mb-3">
-                     <a href="{{route('mypage')}}">All My Posts</a>
+                     <a href="{{route('myposts')}}">All My Posts</a>
                     </div>
                  </div>
          </div>
