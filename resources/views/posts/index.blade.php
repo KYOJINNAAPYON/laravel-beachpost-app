@@ -35,24 +35,7 @@
             Tag : {{ $post->tag }}
             </div>
          
-            <div class="row justify-content-between">
-              <div class="col-2">
-              <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
-                  <a href="{{ route('posts.show',$post->id) }}">Show</a>
-                  <a href="{{ route('posts.edit',$post->id) }}">Edit</a>
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit">Delete</button>
-                </form>
-              </div>
-              <div class="col-2">
-                @if($post->isFavoritedBy(Auth::user()))
-                  <a href="{{ route('posts.favorite', $post) }}" class="btn text-favorite w-100">Liked! ❤︎</a>
-                @else
-                  <a href="{{ route('posts.favorite', $post) }}" class="btn text-favorite w-100">♡</a>
-                @endif
-              </div>
-          </div>
+            
           </div>
         </div>
      @endforeach
