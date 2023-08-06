@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->latest()->get();
+        $posts = Post::latest()->get();
         $categories = Category::all();
  
         // dd($posts);
@@ -118,5 +118,19 @@ class PostController extends Controller
         $post->delete();
   
         return to_route('posts.index');
+    }
+
+    public function favorite(Post $post)
+    {
+        Auth::user()->togglefavorite($post);
+ 
+        return back();
+    }
+
+    public function myposts(Post $post)
+    {
+        $my_posts = Post::where('user_id','=', Auth::user()->id)->latest()->get();
+ 
+        return view('users.mypost', compact('my_posts'));
     }
 }
