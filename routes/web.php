@@ -26,6 +26,12 @@ Route::controller(UserController::class)->group(function () {
     Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
 });
 
+Route::controller(PostController::class)->group(function () {
+    Route::get('users/myposts', 'myposts')->name('myposts');
+    Route::get('users/myposts/edit', 'edit')->name('myposts.edit');
+    Route::put('users/myposts', 'update')->name('myposts.update');
+});
+
 Auth::routes();
 
 Route::resource('posts', PostController::class);
