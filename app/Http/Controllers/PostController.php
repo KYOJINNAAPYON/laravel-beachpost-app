@@ -17,9 +17,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $posts = Post::latest()->get();
+    public function index(Request $request)
+    {                           
+        Post::latest();
+        $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
+                    ->join('categories', 'posts.category_id', '=', 'categories.id')
+                    ->join('users', 'posts.user_id', '=', 'users.id')
+                    ->get();
         $categories = Category::all();
  
         // dd($posts);
@@ -129,7 +133,11 @@ class PostController extends Controller
 
     public function myposts(Post $post)
     {
-        $my_posts = Post::where('user_id','=', Auth::user()->id)->latest()->get();
+        Post::latest();
+        $my_posts = Post::where('user_id','=', Auth::user()->id)
+                    ->select('posts.id as post_id', 'title','content','tag','image','category_id','user_id','categories.id as category_id','categories.name as category_name')
+                    ->join('categories', 'posts.category_id', '=', 'categories.id')
+                    ->get();
  
         return view('users.mypost', compact('my_posts'));
     }

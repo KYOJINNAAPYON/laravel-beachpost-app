@@ -14,7 +14,7 @@
             Title : {{ $my_post->title }}
             </div>
             <div class="col-12 mb-4 mt-2">
-            Place : {{ $my_post->category_id }}
+            Place : {{ $my_post->category_name }}
             </div>
             <div class="col-12 mb-4 mt-2">
             Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
@@ -32,9 +32,9 @@
          
             <div class="row justify-content-between">
               <div class="col-2">
-              <form action="{{ route('posts.destroy',$my_post->id) }}" method="POST">
-                  <a href="{{ route('posts.show',$my_post->id) }}">Show</a>
-                  <a href="{{ route('posts.edit',$my_post->id) }}">Edit</a>
+              <form action="{{ route('posts.destroy',$my_post->post_id) }}" method="POST">
+                  <a href="{{ route('posts.show',$my_post->post_id) }}">Show</a>
+                  <a href="{{ route('posts.edit',$my_post->post_id) }}">Edit</a>
                   @csrf
                   @method('DELETE')
                   <button type="submit">Delete</button>
