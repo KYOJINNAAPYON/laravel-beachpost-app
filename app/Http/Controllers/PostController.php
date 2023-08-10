@@ -134,9 +134,9 @@ class PostController extends Controller
     {
         Post::latest();
         $my_posts = Post::where('user_id','=', Auth::user()->id)
-                    ->select('posts.id as post_id', 'title','content','tag','image','category_id','user_id','categories.id as category_id','categories.name as category_name')
+                    ->select('posts.id as post_id', 'title','content','tag','image','category_id','user_id','categories.id as category_id','categories.name as category_name','posts.created_at', 'posts.updated_at')
                     ->join('categories', 'posts.category_id', '=', 'categories.id')
-                    ->get();
+                    ->sortable()->latest()->get();
  
         return view('users.mypost', compact('my_posts'));
     }

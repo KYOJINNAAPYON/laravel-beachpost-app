@@ -4,6 +4,10 @@
  <table>
      <div class="container mt-4">
          <h2>All Your Posts</h2>
+         <div>
+             Sort By
+             @sortablelink('created_at', 'Created_at')
+         </div>
 
         @foreach ($my_posts as $my_post)
 
