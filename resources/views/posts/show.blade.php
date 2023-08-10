@@ -18,7 +18,7 @@
             Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
             </div>
             <div class="col-12 mb-4 mt-2">
-            Content : {{ $post->content }}
+            Content : <pre>{{ $post->content }}</pre>
             </div>
             <div class="col-12 mb-4 mt-2">
             Tag : {{ $post->tag }}

@@ -33,7 +33,7 @@
               <div class="col-2">by {{ $post->user_name }}</div>
             </div>
             <div class="col-12 mb-4 mt-2">
-            Content : {{ $post->content }}
+            Content : <pre>{{ $post->content }}</pre>
             </div>
             <div class="col-12 mb-4 mt-2">
             Tag : {{ $post->tag }}

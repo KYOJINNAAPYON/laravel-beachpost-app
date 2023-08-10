@@ -28,7 +28,7 @@
               <div class="col-2">{{ $my_post->created_at }}</div>
             </div>
             <div class="col-12 mb-4 mt-2">
-            Content : {{ $my_post->content }}
+            Content : <pre>{{ $my_post->content }}</pre>
             </div>
             <div class="col-12 mb-4 mt-2">
             Tag : {{ $my_post->tag }}
