@@ -19,11 +19,10 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {                           
-        Post::latest();
-        $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
+        $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','posts.created_at', 'posts.updated_at','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
                     ->join('categories', 'posts.category_id', '=', 'categories.id')
                     ->join('users', 'posts.user_id', '=', 'users.id')
-                    ->get();
+                    ->sortable()->latest()->get();
         $categories = Category::all();
  
         // dd($posts);
