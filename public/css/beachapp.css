@@ -11,3 +11,7 @@
   border: 1px solid #333333;
   border-radius: 10px;
 }
+
+pre {
+  white-space: pre-wrap;
+}
