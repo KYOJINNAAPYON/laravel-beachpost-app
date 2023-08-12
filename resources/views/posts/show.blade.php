@@ -4,7 +4,7 @@
  
  <table>
      <div class="container mt-4">
-    
+     
         <div class="col-12">
           <div class="row">
           <div class="post">
@@ -12,7 +12,7 @@
             Title : {{ $post->title }}
             </div>
             <div class="col-12 mb-4 mt-2">
-            Place : {{ $post->category_id }}
+            Place : {{ $post->category->name }}
             </div>
             <div class="col-12 mb-4 mt-2">
             Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
@@ -29,6 +29,7 @@
         <div>
      <a href="{{ route('posts.index') }}"> Back</a>
  </div>
+ 
      </div>
      
     </table>
