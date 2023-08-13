@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::controller(PostController::class)->group(function () {
 Auth::routes();
 
 Route::resource('posts', PostController::class);
+
+Route::resource('/upload', 'UploadController');
+Route::resource('upload',UploadController::class);

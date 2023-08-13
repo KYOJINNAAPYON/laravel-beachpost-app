@@ -32,12 +32,15 @@
           </select>
           </div>
           <div class="mb-5">
-          <label for="formFile" class="form-label">Image</label>
-          <input class="form-control"  name="image" type="file" id="formFile">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="image" class="form-control">
+              <div>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
           </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
+      
         </form>
       </div>
   </table>

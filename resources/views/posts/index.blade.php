@@ -22,7 +22,7 @@
             Place : {{ $post->category_name }}
             </div>
             <div class="col-12 mb-4 mt-2">
-            Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
+              <img src="{{ Storage::url($post->image) }}" width="25%">
             </div>
             <div class="row justify-content-end">
               <div class="col-2"></div>
