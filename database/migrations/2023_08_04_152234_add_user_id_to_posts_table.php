@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('major_cateogy_name');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->integer('user_id');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('major_cateogy_name');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 };
