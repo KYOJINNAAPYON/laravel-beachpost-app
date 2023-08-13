@@ -74,9 +74,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $user = User::find(1); 
-
-        return view('posts.show', compact('post'));
+         return view('posts.show', compact('post'));
     }
 
     /**

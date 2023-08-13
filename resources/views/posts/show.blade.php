@@ -27,7 +27,7 @@
           </div>
         </div>
         <div>
-     <a href="{{ route('posts.index') }}"> Back</a>
+     <a href="{{ route('posts.index') }}"> Back to Toppage</a>
  </div>
  
      </div>

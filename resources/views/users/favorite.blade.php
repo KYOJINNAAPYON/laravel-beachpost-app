@@ -20,7 +20,7 @@
                       <div class="col-8 m-3">
                         <div class="col"><h5 class="w-100">{{App\Models\Post::find($fav->favoriteable_id)->title}}</h5></div>
                         <div class="col"><h6 class="w-100"><pre>{{App\Models\Post::find($fav->favoriteable_id)->content}}</pre></h6></div>
-                        <h6 class="w-100">{{App\Models\Post::find($fav->favoriteable_id)->category_name}}</h5>
+                        <h6 class="w-100">{{App\Models\Post::find($fav->favoriteable_id)->category->name}}</h5>
                       </div>
                     </div>
                   </div>
@@ -33,7 +33,7 @@
                 </div>
                </div>
               </div>
-             </div>
+            
              @endforeach
      </div>
  </table>
