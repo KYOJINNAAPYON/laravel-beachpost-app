@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'prefecture'
     ];
 
     /**
@@ -47,7 +48,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function prefectures() {
+    public function prefecture() {
         return $this->belongsTo(Prefecture::class);
     }
 }
