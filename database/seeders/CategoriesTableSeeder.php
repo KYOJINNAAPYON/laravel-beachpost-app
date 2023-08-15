@@ -16,7 +16,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $major_category_names = [
-            'Beach(海)', 'Cafe(カフェ)', 'Restaurant(レストラン)'
+            'Beach', 'Cafe', 'Restaurant'
         ];
 
         $beach_categories = [
@@ -32,7 +32,7 @@ class CategoriesTableSeeder extends Seeder
         ];
 
         foreach ($major_category_names as $major_category_name) {
-            if ($major_category_name == 'Beach(海)') {
+            if ($major_category_name == 'Beach') {
                 foreach ($beach_categories as $beach_category) {
                     Category::create([
                         'name' => $beach_category,
@@ -41,7 +41,7 @@ class CategoriesTableSeeder extends Seeder
                 }
             }
 
-            if ($major_category_name == 'Cafe(カフェ)') {
+            if ($major_category_name == 'Cafe') {
                 foreach ($cafe_categories as $cafe_category) {
                     Category::create([
                         'name' => $cafe_category,
@@ -50,7 +50,7 @@ class CategoriesTableSeeder extends Seeder
                 }
             }
 
-            if ($major_category_name == 'Restaurant(レストラン)') {
+            if ($major_category_name == 'Restaurant') {
                 foreach ($restaurant_categories as $restaurant_category) {
                     Category::create([
                         'name' => $restaurant_category,
