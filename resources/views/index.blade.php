@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Document</title>
   </head>
+  <a href="{{ asset('storage/orange.png')}}" class="img-thumbnail">アップロードファイル</a>
   <body>
     <form method="POST" action="{{ route('upload.store') }}" enctype="multipart/form-data">
       {{ csrf_field() }}
