@@ -23,7 +23,7 @@ class PostController extends Controller
                     ->join('categories', 'posts.category_id', '=', 'categories.id')
                     ->join('users', 'posts.user_id', '=', 'users.id')
                     ->sortable()->latest()->get();
-        $post_images = Post::select('image')->get();
+        $post_image = Storage::get('orange.png');
         $categories = Category::all();
  
         // dd($posts);
@@ -54,6 +54,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+        // dd($request->file('file'));
 
         $post = new Post();
         $post->title = $request->input('title');
@@ -62,6 +63,9 @@ class PostController extends Controller
         $post->category_id = $request->input('category_id');
         $post->user_id = Auth::id();
         $post->save();
+
+        $file_name = $request->file('image')->getClientOriginalName();
+        $post->image = $request->file('image')->storeAs('public',$file_name);
 
         return to_route('posts.index')->with('flash_message', '投稿が完了しました。'); 
     }
@@ -138,16 +142,5 @@ class PostController extends Controller
                     ->sortable()->latest()->get();
  
         return view('users.mypost', compact('my_posts'));
-    }
-
-    public function upload(Request $request)
-    {
-        // ディレクトリ名
-        $dir = 'img';
-
-        // sampleディレクトリに画像を保存
-        $request->file('image')->store('public/' . $dir);
-        dd($request->file('file'));
-        return view('posts.index');
     }
 }

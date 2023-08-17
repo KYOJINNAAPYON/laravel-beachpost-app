@@ -32,13 +32,13 @@
           </select>
           </div>
           <div class="mb-5">
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="image" class="form-control">
-              <div>
-                <button type="submit">Submit</button>
-              </div>
-            </form>
+          <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+             {{ csrf_field() }}
+
+            <input type="file" id="image" name="image" class="form-control" />
+
+              <button type="submit">upload</button>
+          </form>
           </div>
       
         </form>
