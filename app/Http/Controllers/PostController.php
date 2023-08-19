@@ -64,8 +64,8 @@ class PostController extends Controller
         
 
         // dd($request->file('file'));
-        $file_name = $request->file('image')->getClientOriginalName();
-        $post->image = $request->file('image')->storeAs('public',$file_name);
+        // $file_name = $request->file('image')->getClientOriginalName();
+        $post->image = $request->file('image')->store('img');
         $post->save();
         return to_route('posts.index')->with('flash_message', '投稿が完了しました。'); 
     }
