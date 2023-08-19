@@ -22,7 +22,7 @@
             Place : {{ $post->category_name }}
             </div>
             <div class="col-12 mb-4 mt-2">
-              <img src="{{ asset( $post_image )}}" width="25%">
+              <img src="{{ asset('public/'.$post->file_name) }}" width="25%">
             </div>
             <div class="row justify-content-end">
               <div class="col-2"></div>
