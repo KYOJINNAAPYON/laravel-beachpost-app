@@ -61,6 +61,14 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <select name="prefecture_id">
+                                @foreach ($prefectures as $prefecture)
+                                    <option value="{{ $prefecture->id }}" class="form-control">{{ $prefecture->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
