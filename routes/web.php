@@ -37,5 +37,5 @@ Auth::routes();
 
 Route::resource('posts', PostController::class);
 
-Route::resource('/upload', 'UploadController');
+
 Route::resource('upload',UploadController::class);

@@ -8,7 +8,7 @@
         <h3>Add New Post</h2>
       </div>
   
-          <form action="{{ route('posts.store') }}" method="POST">
+          <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
   
           <div class="mt-4 mb-4">
@@ -32,13 +32,10 @@
           </select>
           </div>
           <div class="mb-5">
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="image" class="form-control">
-              <div>
-                <button type="submit">Submit</button>
-              </div>
-            </form>
+            <input type="file" id="image" name="image" class="form-control" />
+
+              <button type="submit">upload</button>
+          </form>
           </div>
       
         </form>

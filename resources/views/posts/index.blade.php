@@ -15,27 +15,27 @@
         <div class="col-12">
           <div class="row">
           <div class="post">
-            <div class="col-12 mb-4 mt-2">
+            <div class="col-12 m-4 mt-3">
             Title : {{ $post->title }}
             </div>
-            <div class="col-12 mb-4 mt-2">
+            <div class="col-12 m-4 mt-2">
             Place : {{ $post->category_name }}
             </div>
             <div class="col-12 mb-4 mt-2">
-              <img src="{{ Storage::url($post->image) }}" width="25%">
+              <img src="{{ asset($post->image) }}" width="80%" class="d-block mx-auto">
             </div>
-            <div class="row justify-content-end">
-              <div class="col-2"></div>
-              <div class="col-2">{{ $post->created_at }}</div>
+            <div class="row col-12 col-sm-12 justify-content-end">
+              <div class="col-9"></div>
+              <div class="col-3">{{ $post->created_at }}</div>
             </div>
-            <div class="row justify-content-end">
-              <div class="col-2"></div>
-              <div class="col-2">by {{ $post->user_name }}</div>
+            <div class="row col-12 col-sm-12 justify-content-end">
+              <div class="col-9"></div>
+              <div class="col-3">by {{ $post->user_name }}</div>
             </div>
-            <div class="col-12 mb-4 mt-2">
+            <div class="col-12 m-5">
             Content : <pre>{{ $post->content }}</pre>
             </div>
-            <div class="col-12 mb-4 mt-2">
+            <div class="col-12 m-5">
             Tag : {{ $post->tag }}
             </div>
          
