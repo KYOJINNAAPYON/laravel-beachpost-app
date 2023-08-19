@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'prefecture' => ['required'],
+            'prefecture_id' => ['required'],
         ]);
     }
 
@@ -63,21 +63,18 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\Models\User
+     * @return \App\Models\Prefecture
      */
     protected function create(array $data)
     {
+        $prefectures = Prefecture::all();
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'prefecture' => $data['prefecture'],
+            'prefecture_id' => $data['prefecture'],
         ]);
     }
 
-    public function index()
-    {                           
-        $prefectures = Prefecture::all();
- 
-        return view('', compact('prefectures'));
-   }
 }

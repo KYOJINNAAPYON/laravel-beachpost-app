@@ -14,8 +14,9 @@ class UserController extends Controller
     public function mypage()
      {
         $user = Auth::user();
+        $prefectures = Prefectures::all();
  
-        return view('users.mypage', compact('user'));
+        return view('users.mypage', compact('user', 'prefectures'));
      }
 
     /**
@@ -27,8 +28,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $user = Auth::user();
+        $prefectures = Prefectures::all();
  
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'prefectures'));
     }
 
     /**
@@ -44,7 +46,7 @@ class UserController extends Controller
  
         $user->name = $request->input('name') ? $request->input('name') : $user->name;
         $user->email = $request->input('email') ? $request->input('email') : $user->email;
-        $user->prefecture = $request->input('prefecture') ? $request->input('prefecture') : $user->prefecture;
+        $user->prefecture_id = $request->input('prefecture_id') ? $request->input('prefecture_id') : $user->prefecture_id;
         $user->update();
  
          return to_route('mypage');
