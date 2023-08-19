@@ -23,7 +23,7 @@ class PostController extends Controller
                     ->join('categories', 'posts.category_id', '=', 'categories.id')
                     ->join('users', 'posts.user_id', '=', 'users.id')
                     ->sortable()->latest()->get();
-        $post_image = Storage::get('orange.png');
+        // $post_image = Storage::get('orange.png');
         $categories = Category::all();
  
         // dd($posts);
@@ -54,7 +54,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        // dd($request->file('file'));
 
         $post = new Post();
         $post->title = $request->input('title');
@@ -62,11 +61,12 @@ class PostController extends Controller
         $post->tag = $request->input('tag');
         $post->category_id = $request->input('category_id');
         $post->user_id = Auth::id();
-        $post->save();
+        
 
+        // dd($request->file('file'));
         $file_name = $request->file('image')->getClientOriginalName();
         $post->image = $request->file('image')->storeAs('public',$file_name);
-
+        $post->save();
         return to_route('posts.index')->with('flash_message', '投稿が完了しました。'); 
     }
 
