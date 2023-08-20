@@ -65,11 +65,11 @@
                           <label for="prefecture" class="col-md-4 col-form-label text-md-end">{{ __('Prefecture') }}</label>
                             <select name="prefecture_id" id="prefecture_id" class="col-md-6">
                                 <option value="">-- 選択してください --</option>
-                                @if(isset($prefectures)) 
-                                  @foreach ($prefectures as $prefecture)
+                                
+                                  @foreach (\App\Models\Prefecture::orderBy('id')->get() as $prefecture)
                                     <option value="{{ $prefecture->id }}" class="form-control">{{ $prefecture->name }}</option>
                                   @endforeach
-                                @endif
+                               
                             </select>
                         </div>
 
