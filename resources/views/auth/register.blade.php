@@ -61,9 +61,9 @@
                             </div>
                         </div>
 
-                        <!-- <div class="row mb-3">
-                          <label for="prefecture" class="col-md-4 col-form-label text-md-end">{{ __('都道府県') }}</label>
-                            <select name="prefecture_id" class="col-md-6">
+                        <div class="row mb-3">
+                          <label for="prefecture" class="col-md-4 col-form-label text-md-end">{{ __('Prefecture') }}</label>
+                            <select name="prefecture_id" id="prefecture_id" class="col-md-6">
                                 <option value="">-- 選択してください --</option>
                                 @if(isset($prefectures)) 
                                   @foreach ($prefectures as $prefecture)
@@ -71,7 +71,7 @@
                                   @endforeach
                                 @endif
                             </select>
-                        </div> -->
+                        </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
