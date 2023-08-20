@@ -61,6 +61,18 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                          <label for="prefecture" class="col-md-4 col-form-label text-md-end">{{ __('Prefecture') }}</label>
+                            <select name="prefecture_id" id="prefecture_id" class="col-md-6">
+                                <option value="">-- 選択してください --</option>
+                                
+                                  @foreach (\App\Models\Prefecture::orderBy('id')->get() as $prefecture)
+                                    <option value="{{ $prefecture->id }}" class="form-control">{{ $prefecture->name }}</option>
+                                  @endforeach
+                               
+                            </select>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
