@@ -63,7 +63,8 @@
 
                         <div class="row mb-3">
                           <label for="prefecture" class="col-md-4 col-form-label text-md-end">{{ __('Prefecture') }}</label>
-                            <select name="prefecture_id" id="prefecture_id" class="col-md-6">
+                          <div class="col-md-6">
+                            <select name="prefecture_id" id="prefecture_id" class="col-md-6 form-control">
                                 <option value="">-- 選択してください --</option>
                                 
                                   @foreach (\App\Models\Prefecture::orderBy('id')->get() as $prefecture)
@@ -71,6 +72,7 @@
                                   @endforeach
                                
                             </select>
+                          </div>
                         </div>
 
                         <div class="row mb-0">

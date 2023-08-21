@@ -44,22 +44,37 @@
                  </div>
                  <br>
  
-                 <!-- <div class="form-group">
+                 <div class="form-group">
                      <div class="d-flex justify-content-between">
-                         <label for="postal_code" class="text-md-left">Prefecture</label>
+                         <label for="prefecture_id" class="text-md-left">Prefecture</label>
                      </div>
-                     <div class="collapse show editUserPhone">
-                         <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus placeholder="prefecture">
-                         @error('postal_code')
-                         <span class="invalid-feedback" role="alert">
-                             <strong>Please select your Prefecture</strong>
-                         </span>
-                         @enderror
+                     <!-- <div class="collapse editUserPrefecture">
+                         <select name="prefecture_id" id="prefecture_id" class="col-md-6" class="form-control" required autocomplete="prefecture" autofocus placeholder="">
+                         @foreach ($prefectures as $prefecture)
+                            @if ($prefecture->id == $user->prefecture_id)
+                            <option value="{{ $prefecture->id }}" selected>{{ $prefecture->name }}</option>
+                            @else
+                            <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
+                            @endif
+                         @endforeach
+                         </select>
+                     </div> -->
+                     <div class="collapse show editUserMail">
+                         <select name="prefecture_id" class="form-control" name="prefecture" value="{{ $user->prefecture->name }}" required autocomplete="prefecture" autofocus placeholder="prefecture">
+                         @foreach ($prefectures as $prefecture)
+                            @if ($prefecture->id == $user->prefecture_id)
+                            <option value="{{ $prefecture->id }}" selected>{{ $prefecture->name }}</option>
+                            @else
+                            <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
+                            @endif
+                         @endforeach
+                         </select>
+                         
                      </div>
-                 </div> -->
+                 </div>
                  <br>
                  <hr>
-                 <button type="submit" class="btn mt-3 w-25">
+                 <button type="submit" class="btn btn-primary mt-3 w-25">
                      保存
                  </button>
              </form>

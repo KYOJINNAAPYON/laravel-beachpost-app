@@ -14,7 +14,7 @@ class UserController extends Controller
     public function mypage()
      {
         $user = Auth::user();
-        $prefectures = Prefectures::all();
+        $prefectures = Prefecture::all();
  
         return view('users.mypage', compact('user', 'prefectures'));
      }
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $user = Auth::user();
-        $prefectures = Prefectures::all();
+        $prefectures = Prefecture::all();
  
         return view('users.edit', compact('user', 'prefectures'));
     }
