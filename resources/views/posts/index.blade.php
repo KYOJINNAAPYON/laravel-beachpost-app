@@ -33,7 +33,7 @@
               <div class="col-3">by {{ $post->user_name }}</div>
             </div>
             <div class="col-12 m-5">
-            Content : <pre>{{ $post->content }}</pre>
+            Content : <div class="div-pre">{{ $post->content }}</div>
             </div>
             <div class="col-12 m-5">
             Tag : {{ $post->tag }}

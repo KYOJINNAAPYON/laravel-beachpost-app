@@ -21,7 +21,7 @@
           </div>
           <div class="mb-4">
           <strong>Tag:</strong>
-          <input type="text" name="tag" placeholder="#Tag"  class="form-control">
+          <input type="text" name="tag" placeholder="#Tag" class="form-control">
           </div>
           <div class="mb-4">
           <strong>Category:</strong>

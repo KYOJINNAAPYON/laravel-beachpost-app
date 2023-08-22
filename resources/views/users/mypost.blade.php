@@ -21,21 +21,21 @@
             Place : {{ $my_post->category_name }}
             </div>
             <div class="col-12 mb-4 mt-2">
-            Image : <img src="{{ asset('img/IMG_01.jpg')}}" class="img-thumbnail">
+            Image : <img src="{{ asset($my_post->image)}}" width="80%" class="d-block mx-auto">
             </div>
             <div class="row justify-content-between">
-              <div class="col-2"></div>
-              <div class="col-2">{{ $my_post->created_at }}</div>
+              <div class="col-9"></div>
+              <div class="col-3">{{ $my_post->created_at }}</div>
             </div>
-            <div class="col-12 mb-4 mt-2">
-            Content : <pre>{{ $my_post->content }}</pre>
+            <div class="col-12 m-5">
+            Content : <div class="div-pre">{{ $my_post->content }}</div>
             </div>
-            <div class="col-12 mb-4 mt-2">
+            <div class="col-12 m-5">
             Tag : {{ $my_post->tag }}
             </div>
          
             <div class="row justify-content-between">
-              <div class="col-2">
+              <div class="col-12 mx-5">
               <form action="{{ route('posts.destroy',$my_post->post_id) }}" method="POST">
                   <a href="{{ route('posts.show',$my_post->post_id) }}">Show</a>
                   <a href="{{ route('posts.edit',$my_post->post_id) }}">Edit</a>
