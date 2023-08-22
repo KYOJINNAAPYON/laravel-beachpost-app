@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="row">
           <div class="post">
-            <div class="col-12 m-4 mt-3">
+            <div class="col-12 m-4 mt-3 w-75">
             Title : {{ $post->title }}
             </div>
             <div class="col-12 m-4 mt-2">
@@ -33,7 +33,7 @@
               <div class="col-3">by {{ $post->user_name }}</div>
             </div>
             <div class="col-12 m-5">
-            Content : <div class="div-pre">{{ $post->content }}</div>
+            Content : <div class="div-pre w-75">{{ $post->content }}</div>
             </div>
             <div class="col-12 m-5">
             Tag : {{ $post->tag }}

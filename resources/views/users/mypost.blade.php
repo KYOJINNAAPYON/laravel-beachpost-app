@@ -14,7 +14,7 @@
              <div class="col-12">
           <div class="row">
           <div class="post">
-            <div class="col-12 mb-4 mt-2">
+            <div class="col-12 mb-4 mt-2 w-75">
             Title : {{ $my_post->title }}
             </div>
             <div class="col-12 mb-4 mt-2">
@@ -27,7 +27,7 @@
               <div class="col-9"></div>
               <div class="col-3">{{ $my_post->created_at }}</div>
             </div>
-            <div class="col-12 m-5">
+            <div class="col-12 m-5 w-75">
             Content : <div class="div-pre">{{ $my_post->content }}</div>
             </div>
             <div class="col-12 m-5">
