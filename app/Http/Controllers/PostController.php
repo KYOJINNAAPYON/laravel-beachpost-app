@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -106,13 +107,19 @@ class PostController extends Controller
     {
         $post->title = $request->input('title');
         $post->content = $request->input('content');
-        $post->image = $request->input('image');
         $post->tag = $request->input('tag');
         $post->category_id = $request->input('category_id');
+
+        if ($request->hasFile('image')) {
+            // 現在の画像ファイル削除
+            \Storage::disk('local')->delete('img/'.$post->image);
+        }
+        $post->image = $request->file('image')->store('img');
+
         $post->update();
- 
-         return to_route('posts.index');
-    }
+
+        return to_route('posts.index');
+        }
 
     /**
      * Remove the specified resource from storage.

@@ -11,7 +11,7 @@
           <div class="row">
           <div class="post">
 
-    <form action="{{ route('posts.update',$post->id) }}" method="POST">
+    <form action="{{ route('posts.update',$post->id) }}" enctype="multipart/form-data" method="POST">
      @csrf
      @method('PUT')
  
@@ -40,8 +40,7 @@
          </select>
      </div>
      <div class="mb-4">
-          <label for="formFile" class="form-label">Image</label>
-          <input class="form-control"  name="image" type="file" id="formFile">
+          <input type="file" id="image" name="image" class="form-control" />
      </div>
      <div>
          <button type="submit">Submit</button>
