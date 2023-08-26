@@ -36,7 +36,7 @@
             Content : <div class="div-pre w-75">{{ $post->content }}</div>
             </div>
             <div class="col-12 m-5">
-            Tag : {{ $post->tag }}
+            <a href="{{route('tags')}}">{{ $post->tag }}</a>
             </div>
          
             <div class="row justify-content-between">

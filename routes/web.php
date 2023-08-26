@@ -31,6 +31,7 @@ Route::controller(PostController::class)->group(function () {
     Route::get('users/myposts', 'myposts')->name('myposts');
     Route::get('users/myposts/edit', 'edit')->name('myposts.edit');
     Route::put('users/myposts', 'update')->name('myposts.update');
+    Route::get('posts/tags', 'tags')->name('tags');
 });
 
 Auth::routes();

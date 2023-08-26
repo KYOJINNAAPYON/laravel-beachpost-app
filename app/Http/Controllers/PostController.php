@@ -25,8 +25,8 @@ class PostController extends Controller
                     ->join('users', 'posts.user_id', '=', 'users.id')
                     ->sortable()->latest()->get();
         // $post_image = Storage::get('orange.png');
-        $categories = Category::all();
- 
+        $categories = Category::all(); 
+
         // dd($posts);
         return view('posts.index', compact('posts', 'categories'));
    }
@@ -149,5 +149,15 @@ class PostController extends Controller
                     ->sortable()->latest()->get();
  
         return view('users.mypost', compact('my_posts'));
+    }
+
+    public function tags(Request $request, Post $post)
+    {
+        if($post->tag !== null){
+        $tags = Post::select('tag')->get();
+        } else {
+        
+        }
+        return view('posts.tags', compact('tags'));
     }
 }
