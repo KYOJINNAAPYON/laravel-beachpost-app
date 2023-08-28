@@ -54,7 +54,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        // dd($request->file('image'));
+
+        $request->validate([
+            'image' => 'required|max:1024|mimes:jpg,jpeg,png,gif',
+        ]);
 
         $post = new Post();
         $post->title = $request->input('title');
@@ -105,6 +109,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'image' => 'required|max:1024|mimes:jpg,jpeg,png,gif',
+        ]);
+        
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->tag = $request->input('tag');

@@ -40,6 +40,15 @@
          </select>
      </div>
      <div class="mb-4">
+            @if ($errors->any())
+                     <div>
+                         <ul>
+                             @foreach ($errors->all() as $error)
+                                 <li>{{ $error }}</li>
+                             @endforeach
+                         </ul>
+                     </div>
+            @endif
           <input type="file" id="image" name="image" class="form-control" />
      </div>
      <div>

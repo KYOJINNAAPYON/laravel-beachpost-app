@@ -32,6 +32,15 @@
           </select>
           </div>
           <div class="mb-5">
+          @if ($errors->any())
+                     <div>
+                         <ul>
+                             @foreach ($errors->all() as $error)
+                                 <li>{{ $error }}</li>
+                             @endforeach
+                         </ul>
+                     </div>
+          @endif
             <input type="file" id="image" name="image" class="form-control" />
 
               <button type="submit">upload</button>
