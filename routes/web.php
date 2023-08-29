@@ -21,22 +21,21 @@ Route::get('/', [PostController::class, 'index'])->middleware('auth');
 Route::get('posts/{post}/favorite', [PostController::class, 'favorite'])->name('posts.favorite');
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('users/mypage', 'mypage')->name('mypage');
-    Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
-    Route::put('users/mypage', 'update')->name('mypage.update');
-    Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
+    Route::get('users/mypage', 'mypage')->name('mypage')->middleware('auth');
+    Route::get('users/mypage/edit', 'edit')->name('mypage.edit')->middleware('auth');
+    Route::put('users/mypage', 'update')->name('mypage.update')->middleware('auth');
+    Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite')->middleware('auth');
 });
 
 Route::controller(PostController::class)->group(function () {
-    Route::get('users/myposts', 'myposts')->name('myposts');
-    Route::get('users/myposts/edit', 'edit')->name('myposts.edit');
-    Route::put('users/myposts', 'update')->name('myposts.update');
-    Route::get('posts/tags', 'tags')->name('tags');
+    Route::get('users/myposts', 'myposts')->name('myposts')->middleware('auth');
+    Route::get('users/myposts/edit', 'edit')->name('myposts.edit')->middleware('auth');
+    Route::put('users/myposts', 'update')->name('myposts.update')->middleware('auth');
 });
 
 Auth::routes();
 
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostController::class)->middleware('auth');
 
 
 Route::resource('upload',UploadController::class);
