@@ -19,16 +19,27 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {                           
-        $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','posts.created_at', 'posts.updated_at','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
-                    ->join('categories', 'posts.category_id', '=', 'categories.id')
-                    ->join('users', 'posts.user_id', '=', 'users.id')
-                    ->sortable()->latest()->get();
-        // $post_image = Storage::get('orange.png');
-        $categories = Category::all(); 
+    {     
+        if ($request->tag !== null) {
+            $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','posts.created_at', 'posts.updated_at','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
+                            ->join('categories', 'posts.category_id', '=', 'categories.id')
+                            ->join('users', 'posts.user_id', '=', 'users.id')
+                            ->where('tag', $request->tag)
+                            ->sortable()->latest()->get();
+            $categories = Category::all(); 
+            $total_count = Post::where('tag', $request->tag)->count();
+            // $tag = Post::where('tag', $request->tag)->get();
+        } else {
+            $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','posts.created_at', 'posts.updated_at','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
+                            ->join('categories', 'posts.category_id', '=', 'categories.id')
+                            ->join('users', 'posts.user_id', '=', 'users.id')
+                            ->sortable()->latest()->get();
+            $categories = Category::all(); 
+            $total_count = Post::where('tag', $request->tag)->count();
+        }
 
         // dd($posts);
-        return view('posts.index', compact('posts', 'categories'));
+        return view('posts.index', compact('posts', 'categories', 'total_count'));
    }
 
 
@@ -157,15 +168,5 @@ class PostController extends Controller
                     ->sortable()->latest()->get();
  
         return view('users.mypost', compact('my_posts'));
-    }
-
-    public function tags(Request $request, Post $post)
-    {
-        if($post->tag !== null){
-        $tags = Post::select('tag')->get();
-        } else {
-        
-        }
-        return view('posts.tags', compact('tags'));
     }
 }

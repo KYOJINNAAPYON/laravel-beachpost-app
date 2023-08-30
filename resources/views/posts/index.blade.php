@@ -11,9 +11,11 @@
              Sort By
              @sortablelink('created_at', 'Created_at')
          </div>
+        
         @foreach ($posts as $post)
         <div class="col-12">
           <div class="row">
+          
           <div class="post">
             <div class="col-12 m-4 mt-3 w-75">
             Title : {{ $post->title }}
@@ -36,7 +38,7 @@
             Content : <div class="div-pre w-75">{{ $post->content }}</div>
             </div>
             <div class="col-12 m-5">
-            <a href="{{route('tags')}}">{{ $post->tag }}</a>
+            <a href="{{ route('posts.index', ['tag' => $post->tag]) }}">{{ $post->tag }}</a>
             </div>
          
             <div class="row justify-content-between">
