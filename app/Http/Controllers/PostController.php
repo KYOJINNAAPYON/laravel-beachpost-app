@@ -28,7 +28,7 @@ class PostController extends Controller
                             ->sortable()->latest()->get();
             $categories = Category::all(); 
             $total_count = Post::where('tag', $request->tag)->count();
-            // $tag = Post::where('tag', $request->tag)->get();
+            $tags = Post::select('tag')->where('tag', $request->tag)->first();
         } else {
             $posts = Post::select('posts.id as post_id', 'title','content','tag','image','category_id','posts.created_at', 'posts.updated_at','user_id','categories.id as category_id','categories.name as category_name','users.name as user_name')
                             ->join('categories', 'posts.category_id', '=', 'categories.id')
@@ -36,10 +36,11 @@ class PostController extends Controller
                             ->sortable()->latest()->get();
             $categories = Category::all(); 
             $total_count = Post::where('tag', $request->tag)->count();
+            $tags = Post::where('tag', $request->tag)->first();
         }
 
         // dd($posts);
-        return view('posts.index', compact('posts', 'categories', 'total_count'));
+        return view('posts.index', compact('posts', 'categories', 'total_count','tags'));
    }
 
 

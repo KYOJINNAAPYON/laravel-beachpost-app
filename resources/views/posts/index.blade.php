@@ -11,7 +11,13 @@
              Sort By
              @sortablelink('created_at', 'Created_at')
          </div>
-        
+         
+         <div class="container">
+             @if ($tags !== null)
+                 <h1>{{ $tags->tag }}の商品一覧{{$total_count}}件</h1>
+             @endif
+         </div>
+
         @foreach ($posts as $post)
         <div class="col-12">
           <div class="row">
