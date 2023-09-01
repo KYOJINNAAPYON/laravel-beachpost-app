@@ -8,59 +8,56 @@
          <a href="{{ route('posts.create') }}">Create New Post</a>
        </div>
        <div>
-             Sort By
-             @sortablelink('created_at', 'Created_at')
-         </div>
+          Sort By
+          @sortablelink('created_at', 'Created_at')
+       </div>
          
-         <div class="container">
-             @if ($tags !== null)
-                 <h1>{{ $tags->tag }}の商品一覧{{$total_count}}件</h1>
-             @endif
-         </div>
+       <div class="container">
+          @if ($tags !== null)
+            <h1>{{ $tags->tag }}の商品一覧{{$total_count}}件</h1>
+          @endif
+       </div>
+     </div>
 
+      
+    <div class="container mt-4">
+      <div class="row">
         @foreach ($posts as $post)
-        <div class="col-12">
-          <div class="row">
-          
-          <div class="post">
-            <div class="col-12 m-4 mt-3 w-75">
+      
+        <div class="col-md-4 p-2 post">
+            <div>
             Title : {{ $post->title }}
             </div>
-            <div class="col-12 m-4 mt-2">
+            <div>
             Place : {{ $post->category_name }}
             </div>
-            <div class="col-12 mb-4 mt-2">
-              <img src="{{ asset($post->image) }}" width="80%" class="d-block mx-auto">
+            <div>
+              <img src="{{ asset($post->image) }}" width="90%" class="d-block mx-auto">
             </div>
-            <div class="row col-12 col-sm-12 justify-content-end">
-              <div class="col-9"></div>
-              <div class="col-3">{{ $post->created_at }}</div>
-            </div>
-            <div class="row col-12 col-sm-12 justify-content-end">
-              <div class="col-9"></div>
+            <!-- <div>
+              <div>{{ $post->created_at }}</div>
+            </div> -->
+            <div>
+              <div class="col-1"></div>
               <div class="col-3">by {{ $post->user_name }}</div>
             </div>
-            <div class="col-12 m-5">
-            Content : <div class="div-pre w-75">{{ $post->content }}</div>
+            <div>
+            Content : <div>{{ Str::limit( $post->content , 20, '...')}}</div>
             </div>
-            <div class="col-12 m-5">
+            <div>
             <a href="{{ route('posts.index', ['tag' => $post->tag]) }}">{{ $post->tag }}</a>
             </div>
          
-            <div class="row justify-content-between">
-              <div class="col-2"></div>
-              <div class="col-2">
+            <div>
                 @if($post->isFavoritedBy(Auth::user()))
-                  <a href="{{ route('posts.favorite', $post->post_id) }}" class="btn text-favorite w-100">Liked! ❤︎</a>
+                  <a href="{{ route('posts.favorite', $post->post_id) }}" class="btn text-favorite">Liked! ❤︎</a>
                 @else
-                  <a href="{{ route('posts.favorite', $post->post_id) }}" class="btn text-favorite w-100">♡</a>
+                  <a href="{{ route('posts.favorite', $post->post_id) }}" class="btn text-favorite">♡</a>
                 @endif
-              </div>
+            </div>
           </div>
-          </div>
-        </div>
-      </div>
      @endforeach
      </div>
+          </div>
     </table>
  @endsection
