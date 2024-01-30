@@ -14,7 +14,7 @@
          
        <div class="container">
           @if ($tags !== null)
-            <h1>{{ $tags->tag }}の商品一覧{{$total_count}}件</h1>
+            <h1>{{ $tags->tag }}の投稿一覧{{$total_count}}件</h1>
           @endif
        </div>
      </div>
@@ -24,7 +24,7 @@
       <div class="row">
         @foreach ($posts as $post)
       
-        <div class="col-md-4 p-2 post">
+        <div class="col-md-2 p-2 post">
             <div>
             Title : {{ $post->title }}
             </div>
@@ -32,7 +32,7 @@
             Place : {{ $post->category_name }}
             </div>
             <div>
-              <img src="{{ asset($post->image) }}" width="90%" class="d-block mx-auto">
+              <a href="{{ route('posts.show',$post->post_id) }}"><img src="{{ asset($post->image) }}" width="90%" class="d-block mx-auto"></a>
             </div>
             <!-- <div>
               <div>{{ $post->created_at }}</div>
