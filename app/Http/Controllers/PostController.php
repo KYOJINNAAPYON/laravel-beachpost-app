@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -79,10 +80,13 @@ class PostController extends Controller
         $post->category_id = $request->input('category_id');
         $post->user_id = Auth::id();
         
+        $post->image = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+
+        // dd($uploadedFileUrl);
 
         // dd($request->file('file'));
         // $file_name = $request->file('image')->getClientOriginalName();
-        $post->image = $request->file('image')->store('img');
+        // $post->image = $request->file('image')->store('img');
         $post->save();
         return to_route('posts.index')->with('flash_message', '投稿が完了しました。'); 
     }
@@ -170,4 +174,10 @@ class PostController extends Controller
  
         return view('users.mypost', compact('my_posts'));
     }
+
+    public function upload()
+    {
+        return view('upload');
+    }
+    
 }

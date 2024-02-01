@@ -39,3 +39,6 @@ Route::resource('posts', PostController::class)->middleware('auth');
 
 
 Route::resource('upload',UploadController::class);
+
+Route::get('/uplopad', [CloudinaryUploadController::class, 'uplopad']);
+Route::post('/upload', [CloudinaryUploadController::class, 'store'])->name('store');
