@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
+    @cloudinaryJS
   </head>
   <a href="{{ asset('storage/orange.png')}}" class="img-thumbnail">アップロードファイル</a>
   <body>
