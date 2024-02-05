@@ -80,7 +80,7 @@ class PostController extends Controller
         $post->category_id = $request->input('category_id');
         $post->user_id = Auth::id();
         
-        $post->image = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $post->image = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath()->store('img');
 
         // dd($uploadedFileUrl);
 
@@ -138,7 +138,7 @@ class PostController extends Controller
             // 現在の画像ファイル削除
             \Storage::disk('local')->delete('img/'.$post->image);
         }
-        $post->image = $request->file('image')->store('img');
+        $post->image = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath()->store('img');
 
         $post->update();
 
